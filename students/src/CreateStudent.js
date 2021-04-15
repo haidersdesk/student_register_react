@@ -8,11 +8,17 @@ const CreateStudent=(props)=>{
   const[present, setPresent] =useState()
 
 
+
+/*const savedBtnHandler=()=>{
+    props.setView('recorded')
+  }*/
+
 const clickHandler=()=>{
       props.setView('')
     }
    
     const submitHandler =(e)=>{
+      props.setView('recorded')
       e.preventDefault();
 
       const addStudents = async ()=>{

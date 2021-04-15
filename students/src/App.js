@@ -1,8 +1,10 @@
 import './style.css';
 import React,{useEffect, useState} from 'react'
+import RecordAddedView from './RecordAddedView'
 import ViewStudentList from './ViewStudentList'
 import CreateStudent from './CreateStudent'
 import EditStudent from './EditStudent'
+import EditedView from './EditedView'
 import Welcome from './Welcome'
 
 function App() {
@@ -10,7 +12,10 @@ function App() {
   const[view, setView] = useState('')
   const[students, setStudents]=useState([])
   const[studentId, setStudentId]=useState('')
+  const[testS, setTestS]=useState([])
    
+  console.log(studentId)
+
   const deleteStudent = async (student)=>{
     const response = await fetch('http://localhost:8080/students/'+student.student_id,{
       method: 'DELETE',
@@ -47,17 +52,28 @@ function App() {
  case 'viewStudentList':
   return(
     <div>
-      <ViewStudentList setView={setView} students={students} deleteStudent={deleteStudent} setStudentId={setStudentId} />
+      <ViewStudentList setView={setView} students={students} deleteStudent={deleteStudent} setStudentId={setStudentId} setTestS={setTestS}/>
     </div>
     )
    
  case 'viewEditStudent':
    return(
      <div>
-      <EditStudent setView={setView} setStudents={setStudents} studentId={studentId}/>
+      <EditStudent setView={setView} setStudents={setStudents} studentId={studentId} testS={testS}/>
     </div>
  )
-
+case 'edited':
+   return(
+     <div>
+      <EditedView setView={setView}/>
+    </div>
+ )
+ case 'recorded':
+   return(
+     <div>
+      <RecordAddedView setView={setView}/>
+    </div>
+ )
 default:
   return (
     <div>

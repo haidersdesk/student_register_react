@@ -1,7 +1,8 @@
+import React,{useEffect, useState} from 'react'
 
 const ViewStudentList =(props)=>{
 
-
+  
  const clickHandler=()=>{
      props.setView('')
  }
@@ -9,21 +10,19 @@ const ViewStudentList =(props)=>{
  const linkHandler=()=>{
      props.setView('viewEditStudent')
      
-
  }
 
- const students=props.students
- 
 return(
         <ul>
-            {students.map((student, index)=> {
+            {props.students.map((student, index)=> {
            return(
             <li key={index}>
-             <a href='#' onClick={linkHandler}>{student.name}, {student.last_name} {props.setStudentId(student.student_id)} <button className="btn" onClick={()=>props.deleteStudent(student)} >X</button></a>
+             <p>{student.name},{student.last_name} {props.setTestS(student)} {student.present === true?'is PRESENT':'is ABSENT'}</p>
+             <a href='#'onClick={linkHandler}><button className="btn" onClick={()=>{props.setStudentId(student.student_id)}}>Edit</button></a>
+             <button className="btn" onClick={()=>props.deleteStudent(student)}>X</button>
             </li>
            )
-        })
-           
+        })  
     }
     <button className="btn" onClick={clickHandler}>Back</button>
         </ul>
