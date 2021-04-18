@@ -37,13 +37,17 @@ const clickHandler=()=>{
       last_name: lastName,
       age: age,
       present: present
-    
    })
-   
   })
 
   const updatedStudent = await response.json();
-  props.setStudents(prevStudents=>[...prevStudents, updatedStudent])
+    
+  //props.setStudents(prevStudents=>[...prevStudents])
+  //console.log(updatedStudent)
+ 
+  props.setStudents((prevStudents)=>{
+   return prevStudents.map(prevStudent=>prevStudent.student_id !== updatedStudent.student_id?  prevStudent: updatedStudent)    
+  })
  }
   updateStudent()
 }

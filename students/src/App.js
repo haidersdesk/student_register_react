@@ -12,9 +12,7 @@ function App() {
   const[view, setView] = useState('')
   const[students, setStudents]=useState([])
   const[studentId, setStudentId]=useState('')
-  const[testS, setTestS]=useState([])
-   
-  console.log(studentId)
+  
 
   const deleteStudent = async (student)=>{
     const response = await fetch('http://localhost:8080/students/'+student.student_id,{
@@ -52,14 +50,14 @@ function App() {
  case 'viewStudentList':
   return(
     <div>
-      <ViewStudentList setView={setView} students={students} deleteStudent={deleteStudent} setStudentId={setStudentId} setTestS={setTestS}/>
+      <ViewStudentList setView={setView} students={students} deleteStudent={deleteStudent} setStudentId={setStudentId} />
     </div>
     )
    
  case 'viewEditStudent':
    return(
      <div>
-      <EditStudent setView={setView} setStudents={setStudents} studentId={studentId} testS={testS}/>
+      <EditStudent setView={setView} setStudents={setStudents} studentId={studentId} />
     </div>
  )
 case 'edited':

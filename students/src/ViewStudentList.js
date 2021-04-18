@@ -1,4 +1,3 @@
-import React,{useEffect, useState} from 'react'
 
 const ViewStudentList =(props)=>{
 
@@ -17,7 +16,7 @@ return(
             {props.students.map((student, index)=> {
            return(
             <li key={index}>
-             <p>{student.name},{student.last_name} {props.setTestS(student)} {student.present === true?'is PRESENT':'is ABSENT'}</p>
+             <p>{student.name},{student.last_name} {student.present === true?'is PRESENT':'is ABSENT'}</p>
              <a href='#'onClick={linkHandler}><button className="btn" onClick={()=>{props.setStudentId(student.student_id)}}>Edit</button></a>
              <button className="btn" onClick={()=>props.deleteStudent(student)}>X</button>
             </li>
